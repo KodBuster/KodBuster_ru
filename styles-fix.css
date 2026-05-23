@@ -8,13 +8,8 @@
   }
 
   main > section.relative.min-h-screen {
-    padding-top: 9rem;
+    padding-top: 10rem;
     box-sizing: border-box;
-  }
-
-  main > section.relative.min-h-screen h1 {
-    font-size: clamp(2.75rem, 5.5vw, 5.25rem) !important;
-    line-height: 1.05;
   }
 
   main > section.relative.min-h-screen .max-w-6xl {
