@@ -4,15 +4,15 @@
 
 Build KodBuster as a distinctive, high-converting Russian-language web studio site. The result must feel art-directed rather than template-generated, while remaining fast, accessible, responsive, and fully functional.
 
-## Repository reality
+## Repository layout
 
-- The current repository is a deployed static Next.js export, not the editable source project.
-- It contains generated `index.html`, `_next/` chunks, route payloads, and a small `styles-fix.css` override.
-- There is currently no `package.json`, `src/`, or `app/` directory.
+- `site/` is the only maintainable website source. It is a Next.js App Router + TypeScript project.
+- Root-level `index.html`, `_next/`, route payloads, and `styles-fix.css` are the legacy deployed export.
 - Do not pretend generated chunks are maintainable source code.
-- For a full redesign, first restore/import the original source or create a clean source application. Keep the deployed export available until its replacement is verified.
+- Make all new product work inside `site/`. Keep the legacy export available until the replacement is verified and approved.
 - Only patch generated HTML/CSS for an explicitly requested emergency hotfix. Document every such patch.
-- GitHub Pages is served below `/KodBuster_ru/`; preserve the base path and `.nojekyll` behavior until hosting changes.
+- GitHub Pages is served below `/KodBuster_ru/`; `site/next.config.ts` reads `NEXT_PUBLIC_BASE_PATH` for deployment.
+- Use `npm ci`, `npm run lint`, `npm run typecheck`, `npm run build`, and `npm run test:e2e` from `site/`.
 
 ## Required workflow
 
