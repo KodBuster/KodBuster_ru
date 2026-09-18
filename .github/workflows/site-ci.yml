@@ -35,3 +35,9 @@ jobs:
           NEXT_PUBLIC_BASE_PATH: /KodBuster_ru
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
+      - name: Upload static preview
+        uses: actions/upload-artifact@v6
+        with:
+          name: kodbuster-site-preview
+          path: site/out
+          retention-days: 7

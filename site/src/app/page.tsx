@@ -3,6 +3,48 @@ import { HeroConsole } from "@/components/hero-console";
 import { SiteHeader } from "@/components/site-header";
 import { cases, processSteps, services } from "@/data/site";
 
+function CaseVisual({ type }: { type: (typeof cases)[number]["visual"] }) {
+  if (type === "padel") {
+    return (
+      <div className="case-art case-art-padel" aria-hidden="true">
+        <span className="case-art-label">COURT / 05</span>
+        <div className="court"><i /><i /><b>PADEL</b></div>
+        <span className="case-art-score">07:00 — 24:00</span>
+      </div>
+    );
+  }
+
+  if (type === "jewelry") {
+    return (
+      <div className="case-art case-art-jewelry" aria-hidden="true">
+        <span className="case-art-label">925 / LAB DIAMONDS</span>
+        <div className="ring"><i /></div>
+        <span className="jewelry-word">СИНОНИМ</span>
+      </div>
+    );
+  }
+
+  if (type === "balloons") {
+    return (
+      <div className="case-art case-art-balloons" aria-hidden="true">
+        <span className="case-art-label">ДОСТАВКА / ЖУКОВСКИЙ</span>
+        <div className="balloon balloon-one" /><div className="balloon balloon-two" />
+        <div className="balloon balloon-three" /><div className="balloon balloon-four" />
+        <span className="balloon-word">ШАРОДУВЫ</span>
+      </div>
+    );
+  }
+
+  return (
+    <div className="case-art case-art-commerce" aria-hidden="true">
+      <span className="case-art-label">SHOP / 24·7</span>
+      <div className="commerce-card commerce-card-back"><i /></div>
+      <div className="commerce-card commerce-card-front"><span>FUN</span><b>ШАР</b><i /></div>
+      <span className="commerce-price">от 250 ₽</span>
+    </div>
+  );
+}
+
 export default function HomePage() {
   return (
     <>
@@ -73,10 +115,15 @@ export default function HomePage() {
             <div className="case-grid">
               {cases.map((item, index) => (
                 <a className={`case-card case-${item.tone}`} href={item.href} target="_blank" rel="noreferrer" key={item.title}>
-                  <span className="case-number">0{index + 1}</span>
-                  <div className="case-shape" aria-hidden="true"><span>{item.title.slice(0, 1)}</span></div>
+                  <div className="case-meta"><span className="case-number">0{index + 1}</span><span>{item.category}</span></div>
+                  <CaseVisual type={item.visual} />
                   <div className="case-caption">
-                    <div><span>{item.category}</span><h3>{item.title}</h3></div>
+                    <div>
+                      <h3>{item.title}</h3>
+                      <p>{item.summary}</p>
+                      <strong>{item.result}</strong>
+                      <ul aria-label="Типы работ">{item.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
+                    </div>
                     <ArrowUpRight />
                   </div>
                 </a>

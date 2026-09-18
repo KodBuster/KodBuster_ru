@@ -669,10 +669,11 @@ svg {
 
 .case-card {
   position: relative;
-  min-height: 340px;
+  min-height: 560px;
   display: grid;
-  grid-template-rows: auto 1fr auto;
-  padding: 1rem;
+  grid-template-rows: auto minmax(220px, 1fr) auto;
+  gap: 1rem;
+  padding: 1.15rem;
   color: var(--ink);
   border-radius: var(--radius-md);
   overflow: hidden;
@@ -688,61 +689,240 @@ svg {
 .case-signal { background: #d6d1ff; }
 .case-ember { background: var(--signal); }
 
-.case-number {
+.case-meta {
   position: relative;
-  z-index: 2;
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
-.case-shape {
+.case-art {
+  position: relative;
+  min-height: 250px;
+  overflow: hidden;
+  border: 1px solid rgba(16, 18, 15, 0.28);
+  border-radius: 14px;
+}
+
+.case-art-label,
+.case-art-score,
+.commerce-price {
   position: absolute;
-  inset: 14% 12% 20%;
-  display: grid;
-  place-items: center;
-  border: 1px solid rgba(16, 18, 15, 0.32);
-  border-radius: 50%;
-  transform: rotate(-11deg);
+  z-index: 4;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
 }
 
-.case-shape::before {
+.case-art-label { top: 0.8rem; left: 0.8rem; }
+
+.case-art-padel {
+  background:
+    radial-gradient(circle at 76% 24%, rgba(216, 255, 62, 0.8) 0 4%, transparent 4.5%),
+    linear-gradient(145deg, #15352b, #081912);
+}
+
+.case-art-padel .case-art-label,
+.case-art-padel .case-art-score { color: var(--acid); }
+
+.court {
+  position: absolute;
+  inset: 22% 14%;
+  border: 2px solid var(--acid);
+  transform: perspective(500px) rotateX(54deg) rotateZ(-8deg);
+  box-shadow: 18px 18px 0 rgba(216, 255, 62, 0.12);
+}
+
+.court::before,
+.court::after,
+.court i {
   content: "";
   position: absolute;
-  width: 72%;
-  aspect-ratio: 1;
-  border: 1px solid rgba(16, 18, 15, 0.28);
-  border-radius: 24%;
-  transform: rotate(28deg);
+  background: var(--acid);
 }
 
-.case-shape span {
-  position: relative;
-  z-index: 1;
-  font-size: clamp(5rem, 20vw, 9rem);
+.court::before { width: 2px; inset-block: 0; left: 50%; }
+.court::after { height: 2px; inset-inline: 0; top: 50%; }
+.court i:first-child { width: 1px; inset-block: 0; left: 25%; }
+.court i:nth-child(2) { width: 1px; inset-block: 0; right: 25%; }
+
+.court b {
+  position: absolute;
+  right: -1rem;
+  bottom: -1.8rem;
+  color: var(--acid);
+  font-size: clamp(2.5rem, 9vw, 5rem);
+  line-height: 0.8;
+  letter-spacing: -0.08em;
+}
+
+.case-art-score { right: 0.8rem; bottom: 0.8rem; }
+
+.case-art-jewelry {
+  background: linear-gradient(150deg, #f7f8f2, #bac9c5);
+}
+
+.ring {
+  position: absolute;
+  width: min(48%, 190px);
+  aspect-ratio: 1;
+  top: 50%;
+  left: 50%;
+  border: 10px solid #fff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotate(-22deg);
+  box-shadow: inset 0 0 0 1px #8d9996, 15px 18px 34px rgba(16, 18, 15, 0.2);
+}
+
+.ring i {
+  position: absolute;
+  width: 46%;
+  aspect-ratio: 1;
+  top: -28%;
+  left: 27%;
+  background: linear-gradient(135deg, white 10%, #91c9c4 48%, white 52%, #789f9d);
+  border: 1px solid rgba(16, 18, 15, 0.2);
+  transform: rotate(45deg);
+  box-shadow: 0 8px 30px rgba(16, 18, 15, 0.28);
+}
+
+.jewelry-word {
+  position: absolute;
+  right: 0.7rem;
+  bottom: 0.35rem;
+  color: rgba(16, 18, 15, 0.7);
+  font-family: Georgia, serif;
+  font-size: clamp(2.2rem, 8vw, 4.6rem);
+  line-height: 1;
+  letter-spacing: -0.07em;
+}
+
+.case-art-balloons {
+  background: linear-gradient(145deg, #eeeafd, #b9b0f8);
+}
+
+.balloon {
+  position: absolute;
+  width: 30%;
+  aspect-ratio: 0.82;
+  border: 1px solid rgba(16, 18, 15, 0.18);
+  border-radius: 50% 50% 48% 48%;
+  box-shadow: inset -12px -14px 24px rgba(16, 18, 15, 0.12);
+}
+
+.balloon::after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 130%;
+  top: 96%;
+  left: 50%;
+  background: rgba(16, 18, 15, 0.3);
+  transform: rotate(8deg);
+  transform-origin: top;
+}
+
+.balloon-one { left: 8%; top: 20%; background: #ff7e57; transform: rotate(-8deg); }
+.balloon-two { left: 31%; top: 8%; background: #d8ff3e; }
+.balloon-three { right: 10%; top: 24%; background: #6454ff; transform: rotate(9deg); }
+.balloon-four { left: 39%; top: 35%; background: #fff; transform: scale(0.8); }
+
+.balloon-word {
+  position: absolute;
+  z-index: 3;
+  right: 0.7rem;
+  bottom: 0.2rem;
+  font-size: clamp(2rem, 7vw, 4.2rem);
   font-weight: 900;
   line-height: 1;
-  transform: rotate(11deg);
+  letter-spacing: -0.07em;
 }
+
+.case-art-commerce {
+  background: #f2aa43;
+}
+
+.commerce-card {
+  position: absolute;
+  width: 42%;
+  aspect-ratio: 0.78;
+  border: 1px solid rgba(16, 18, 15, 0.28);
+  border-radius: 10px;
+}
+
+.commerce-card-back {
+  left: 18%;
+  top: 18%;
+  background: #ff6b42;
+  transform: rotate(-12deg);
+}
+
+.commerce-card-front {
+  right: 15%;
+  top: 12%;
+  display: grid;
+  align-content: center;
+  padding: 0.8rem;
+  color: white;
+  background: #22241f;
+  transform: rotate(8deg);
+}
+
+.commerce-card-front span { color: var(--acid); font-family: var(--font-mono); font-size: 0.6rem; }
+.commerce-card-front b { font-size: clamp(2rem, 8vw, 4.5rem); line-height: 0.8; letter-spacing: -0.08em; }
+.commerce-card-front i { width: 46%; aspect-ratio: 1; margin-top: 1rem; background: var(--acid); border-radius: 50%; }
+.commerce-price { right: 0.8rem; bottom: 0.8rem; }
 
 .case-caption {
   position: relative;
   z-index: 2;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto;
   align-items: end;
-  justify-content: space-between;
   gap: 1rem;
 }
 
-.case-caption span {
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  text-transform: uppercase;
+.case-caption h3 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 0.95;
+  letter-spacing: -0.055em;
 }
 
-.case-caption h3 {
-  margin: 0.25rem 0 0;
-  font-size: 1.6rem;
-  letter-spacing: -0.04em;
+.case-caption p {
+  max-width: 590px;
+  margin: 0.8rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.case-caption strong {
+  display: block;
+  margin-top: 0.8rem;
+  font-size: 0.75rem;
+}
+
+.case-caption ul {
+  margin: 0.8rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  list-style: none;
+}
+
+.case-caption li {
+  padding: 0.25rem 0.45rem;
+  border: 1px solid rgba(16, 18, 15, 0.28);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.52rem;
+  text-transform: uppercase;
 }
 
 .case-caption svg {
@@ -945,7 +1125,7 @@ svg {
   }
 
   .case-card {
-    min-height: 440px;
+    min-height: 650px;
   }
 
   .case-card:nth-child(1),

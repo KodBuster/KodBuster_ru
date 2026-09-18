@@ -24,10 +24,46 @@ export const services = [
 ] as const;
 
 export const cases = [
-  { title: "Rampa", category: "Веб-проект", href: "https://rampadel.ru/", tone: "acid" },
-  { title: "Synonym", category: "Jewelry / e-commerce", href: "https://synonym-jewelry.ru/", tone: "ice" },
-  { title: "Шародую", category: "Сервис / каталог", href: "https://sharoduwi.ru/", tone: "signal" },
-  { title: "Funshar", category: "События / продажи", href: "https://funshar.ru/", tone: "ember" },
+  {
+    title: "РамПадел",
+    category: "Спорт / корпоративный сайт",
+    href: "https://rampadel.ru/",
+    tone: "acid",
+    visual: "padel",
+    summary: "Энергичная цифровая площадка клуба: услуги, цены, корты, тренеры и быстрый путь к записи.",
+    result: "Продукт клуба собран в одном понятном сценарии",
+    tags: ["Арт-дирекшн", "UX/UI", "Разработка"],
+  },
+  {
+    title: "Синоним",
+    category: "Jewelry / e-commerce",
+    href: "https://synonym-jewelry.ru/shop",
+    tone: "ice",
+    visual: "jewelry",
+    summary: "Каталог украшений, где спокойная подача бренда сочетается с фильтрами, сравнением и покупкой.",
+    result: "Категории, размеры и цены собраны в удобную витрину",
+    tags: ["Каталог", "Фильтры", "E-commerce"],
+  },
+  {
+    title: "Шародувы",
+    category: "Retail / локальный сервис",
+    href: "https://sharoduwi.ru/zhukovskiy",
+    tone: "signal",
+    visual: "balloons",
+    summary: "Яркий локальный магазин с подборками по поводу, каталогом и прозрачным сценарием доставки.",
+    result: "Выбор, заказ и доставка объяснены за четыре шага",
+    tags: ["Структура", "Каталог", "Mobile-first"],
+  },
+  {
+    title: "ФанШар",
+    category: "E-commerce / праздники",
+    href: "https://funshar.ru/",
+    tone: "ember",
+    visual: "commerce",
+    summary: "Интернет-магазин воздушных шаров с категориями под аудиторию, витриной хитов и корзиной.",
+    result: "Большой ассортимент разложен по понятным поводам",
+    tags: ["Интернет-магазин", "Навигация", "Продажи"],
+  },
 ] as const;
 
 export const processSteps = [

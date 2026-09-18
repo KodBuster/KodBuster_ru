@@ -12,6 +12,9 @@ test("landing page exposes the primary journey", async ({ page }) => {
   await expect(page.getByRole("link", { name: /Обсудить проект/ }).first()).toHaveAttribute("href", "https://t.me/kodbuster");
   await page.getByRole("link", { name: "Посмотреть кейсы" }).click();
   await expect(page.locator("#cases")).toBeInViewport();
+  await expect(page.locator(".case-card")).toHaveCount(4);
+  await expect(page.getByRole("heading", { name: "РамПадел" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Синоним" })).toBeVisible();
   await expect(page.locator("body")).not.toHaveCSS("overflow-x", "scroll");
   expect(errors).toEqual([]);
 });
