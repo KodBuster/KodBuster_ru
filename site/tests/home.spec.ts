@@ -21,7 +21,8 @@ test("mobile navigation opens and reaches sections", async ({ page }, testInfo) 
   await page.goto("/");
   const toggle = page.getByRole("button", { name: "Открыть меню" });
   await toggle.click();
-  await expect(toggle).toHaveAttribute("aria-expanded", "true");
+  const closeToggle = page.getByRole("button", { name: "Закрыть меню" });
+  await expect(closeToggle).toHaveAttribute("aria-expanded", "true");
   await page.getByRole("navigation", { name: "Мобильная навигация" }).getByRole("link", { name: /Услуги/ }).click();
   await expect(page.locator("#services")).toBeInViewport();
   await expect(page.getByRole("button", { name: "Открыть меню" })).toHaveAttribute("aria-expanded", "false");
